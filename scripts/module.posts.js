@@ -1,5 +1,4 @@
-import { BASE_URL } from "./api.js";
-import { getCurrentUser } from "./user.js";
+import { getCurrentUser } from "./module.user.js";
 
 export async function getPosts(filterByTag) {
 
@@ -13,10 +12,8 @@ export async function getPosts(filterByTag) {
     const filter = filterByTag ? `&_tag=${encodeURIComponent(filterByTag)}` : ''
 
     // Request the feed from the API.
-    const response = await fetch(`${BASE_URL}/social/posts?_author=true${filter}`, {
-        headers: {
-            "Authorization": `Bearer ${user.accessToken}`
-        }
+    const response = await fetch(`https://api.noroff.dev/api/v1/social/posts?_author=true${filter}`, {
+        headers: { "Authorization": `Bearer ${user.accessToken}` }
     })
 
     // Handle if the request failed.
@@ -37,8 +34,8 @@ export async function updateOrCreatePost(post) {
         return []
 
     const [method, url] = post.id
-        ? ["PUT",  `${BASE_URL}/social/posts/${post.id}`]
-        : ["POST", `${BASE_URL}/social/posts`]
+        ? ["PUT",  `https://api.noroff.dev/api/v1/social/posts/${post.id}`]
+        : ["POST", `https://api.noroff.dev/api/v1/social/posts`]
 
     // Post the post to the API.
     await fetch(url, {
@@ -60,7 +57,7 @@ export async function deletePost(post) {
         return []
 
     // Delete the post through the API.
-    await fetch(`${BASE_URL}/social/posts/${post.id}`, {
+    await fetch(`https://api.noroff.dev/api/v1/social/posts/${post.id}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Bearer ${user.accessToken}`
@@ -77,7 +74,7 @@ export async function getPost(id) {
         return []
 
     // Request the feed from the API.
-    const response = await fetch(`${BASE_URL}/social/posts/${id}?_author=true`, {
+    const response = await fetch(`https://api.noroff.dev/api/v1/social/posts/${id}?_author=true`, {
         headers: {
             "Authorization": `Bearer ${user.accessToken}`
         }

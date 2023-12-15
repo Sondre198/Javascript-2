@@ -1,15 +1,9 @@
-import { getCurrentUser } from "./modules/user.js"
-import { deletePost, getPosts, updateOrCreatePost } from "./modules/posts.js"
-import { createPostElement } from "./modules/components.js"
+import { getCurrentUser } from "./module.user.js"
+import { deletePost, getPosts, updateOrCreatePost } from "./module.posts.js"
+import { createPostElement, createTagElement } from "./module.components.js"
 
 // Get the currently signed in user if any.
 const user = getCurrentUser()
-
-if (!user) {
-    // The user is not signed in.
-    // We send them to the login page.
-    location.href = "./"
-}
 
 document.getElementById("account-name").innerText = user.name
 
@@ -65,7 +59,7 @@ async function loadFeed() {
     for (const post of feed)
     {
         feedContainer.append(createPostElement(post, {
-            canEdit: true,
+            canEdit: post.author.name == user.name,
             
             onClick: () => {
                 location.href = "./post.html?id=" + post.id
@@ -82,7 +76,7 @@ async function loadFeed() {
                 document.getElementById("post-tags").value = post.tags.join('; ')
                 document.getElementById("post-media").value = post.media
             },
-            onClickTag: tag => {
+            onClickTag: (post, tag) => {
                 filterByTag = tag
                 loadFeed()
             }
@@ -90,7 +84,7 @@ async function loadFeed() {
     }
 }
 
-document.getElementById("post-btn").onclick = async event => 
+document.querySelector("form").onsubmit = async event => 
 {
     event.preventDefault()
 

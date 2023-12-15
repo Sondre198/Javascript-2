@@ -44,7 +44,7 @@ input {
     margin: 10px 0;
 }
 
-form button {
+button {
     all: unset;
     font-family: var(--large-font);
     font-weight: bold;
@@ -57,11 +57,40 @@ form button {
     cursor: pointer;
 }
 
-#submit:hover {
+button:focus-visible,
+button:hover {
     transition: 250ms;
     background-color: #1a8cd8;
 }
 
 .field {
     display: grid;
+}
+
+.dialog__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    display: grid;
+    place-items: center;
+}
+.dialog {
+    background-color: #1f344b;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.24);
+    color: white;
+    min-width: 300px;
+}
+.dialog button {
+    margin-left: auto;
+    margin-right: 0;
+    display: block;
+}
+.dialog p {
+    opacity: 0.8;
 }

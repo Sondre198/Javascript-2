@@ -21,13 +21,13 @@ export function createPostElement(post, options = {}) {
         const deleteButton = document.createElement("button")
         deleteButton.className = "post__action post__action--delete"
         deleteButton.innerText = "Delete"
-        deleteButton.onclick = () => options?.onDelete?.(post)
+        deleteButton.onclick = e => { e.stopPropagation(); options?.onDelete?.(post) }
         actions.append(deleteButton)
 
         const editButton = document.createElement("button")
         editButton.className = "post__action post__action--edit"
         editButton.innerText = "Edit"
-        editButton.onclick = () => options?.onEdit?.(post)
+        editButton.onclick = e => { e.stopPropagation(); options?.onEdit?.(post) }
         actions.append(editButton)
     }
 
@@ -78,6 +78,6 @@ export function createTagElement(value, options = {}) {
     const tag = document.createElement("div")
     tag.className = "post__tag"
     tag.innerText = value
-    tag.onclick = () => options?.onClickTag?.(value)
+    tag.onclick = e => { e.stopPropagation(); options?.onClickTag?.(value) }
     return tag;
 }

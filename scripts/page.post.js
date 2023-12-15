@@ -1,14 +1,9 @@
-import { createPostElement } from "./modules/components.js";
-import { getPost } from "./modules/posts.js";
-import { getCurrentUser } from "./modules/user.js";
+import { createPostElement } from "./module.components.js";
+import { getPost } from "./module.posts.js";
+import { getCurrentUser } from "./module.user.js";
 
-const user = getCurrentUser()
-
-if (!user)
-{
-    // Go to login
-    location.href = "./"
-}
+// Navigates to login if the user is not signed in
+getCurrentUser()
 
 const postContainer = document.getElementById("container")
 

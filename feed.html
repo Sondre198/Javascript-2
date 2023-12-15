@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X | Feed</title>
+    <link rel="stylesheet" href="./styles/feed.css">
+    <link rel="stylesheet" href="./styles/common.css">
+</head>
+<body>
+    <header>
+        <section id="account-name" class="header__account-name"></section>
+    </header>
+    <form>
+        <h3>New post</h3>
+        <div class="field">
+            <label>Title</label>
+            <input id="post-title" name="title" autocomplete="off" required minlength="3" />
+        </div>
+        <div class="field">
+            <label>Content</label>
+            <textarea id="post-body" name="body" autocomplete="off"></textarea>
+        </div>
+        <div class="field">
+            <label>Media</label>
+            <input id="post-media" name="media" autocomplete="off" type="url"/>
+        </div>
+        <div class="field">
+            <label>Tags</label>
+            <input id="post-tags" name="tags"  autocomplete="off"/>
+        </div>
+        <div class="field-btn">
+            <button id="post-btn">Post</button>
+            <button id="post-clear-btn">Clear</button>
+        </div>
+        
+    </form>
+    <div class="field-search">
+        <label for="post-search">Search</label>
+        <input id="post-search">
+    </div>
+    <main role="feed" id="feed"></main>
+
+    <script src="./scripts/page.feed.js" type="module"></script>
+</body>
+</html>

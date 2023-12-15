@@ -1,0 +1,99 @@
+#feed {
+    display: grid;
+    gap: 10px;
+    font-family: sans-serif;
+}
+
+.field-btn {
+    justify-content: space-between;
+    margin: auto;
+    padding: 15px 0;
+}
+
+.field-search {
+    margin: 32px auto;
+    font-family: var(--large-font);
+    color: white;
+    max-width: 600px;
+}
+
+#post-search {
+    margin: auto;
+    width: 100%;
+}
+
+main {
+    margin: 32px auto;
+    color: white;
+    max-width: 600px;
+}
+
+.post {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    max-width: 600px;
+}
+
+.post__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 8px;
+}
+.post__title {
+    /* Title of the post */
+    margin: 0;
+
+}
+.post__actions {
+    
+    display: flex;
+    gap: 4px;
+}
+.post__body {
+    /* The main content of the post */
+    height: auto;
+    padding: 8px;
+}
+.post__media {
+    width: 100%;
+    object-fit: fill;
+}
+.post__footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    padding: 8px;
+}
+.post__tags {
+    /* List of tags */
+    display: flex;
+    gap: 4px;
+    grid-column: span 2;
+}
+.post__tag {
+    color: dodgerblue;
+}
+.post__tag:hover,
+.post__tag:focus {
+    /* Tags for post. If the user clicks these, they only see the posts with the clicked tag */
+    text-decoration: underline;
+    cursor: pointer;
+}
+.post__timestamp {
+    /* Date the post was last changed. */
+    opacity: 0.65;
+}
+.post__author {
+    /* Name of person who wrote the post. */
+    text-align: end;
+}
+
+.filter {
+    margin: 16px 0;
+}
+
+.search {
+    margin: 16px 0;
+}
